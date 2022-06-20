@@ -13,7 +13,7 @@ namespace WebApiVolaris.Controllers
         [HttpGet]
         public ApiResponse Get()
         {
-            return new DriverModel().GetAll();
+            return new FlightModel().GetAll();
         }
 
         // GET api/<DriverController>/5
