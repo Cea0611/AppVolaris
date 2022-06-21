@@ -1,5 +1,4 @@
-﻿using Applier.Models;
-using AppVolaris.Models;
+﻿using AppVolaris.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ namespace AppVolaris.Services
 {
     internal class ApiService
     {
-        private string ApiUrl = "";
+        private string ApiUrl = "https://webapivuelo.azurewebsites.net";
 
         public async Task<ApiResponse> GetDataAsync(string controller)
         {
@@ -50,12 +49,102 @@ namespace AppVolaris.Services
         {
             try
             {
+                var serialize = JsonConvert.SerializeObject(data);
+                var content = new StringContent(serialize, Encoding.UTF8, "application/json");
+
+                var client = new HttpClient
+                {
+                    BaseAddress = new Uri(ApiUrl)
+                };
+                var response = await client.PostAsync(controller, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = JsonConvert.DeserializeObject<ApiResponse>(result);
+                }
+
+                return new ApiResponse
+                {
+                    IsSuccess = false,
+                    Message = result
+                };
 
             }
             catch (Exception ex)
             {
+                return new ApiResponse
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
 
-                throw;
+            }
+        }
+        public async Task<ApiResponse> PutDataAsync(string controller, object data)
+        {
+            try
+            {
+                var serialize = JsonConvert.SerializeObject(data);
+                var content = new StringContent(serialize, Encoding.UTF8, "application/json");
+
+                var client = new HttpClient
+                {
+                    BaseAddress = new Uri(ApiUrl)
+                };
+                var response = await client.PutAsync(controller, content);
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return JsonConvert.DeserializeObject<ApiResponse>(result);
+                }
+
+                return new ApiResponse
+                {
+                    IsSuccess = false,
+                    Message = result
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        public async Task<ApiResponse> DeleteDataAsync(string controller, int id)
+        {
+            try
+            {
+                var client = new HttpClient
+                {
+                    BaseAddress = new Uri(ApiUrl)
+                };
+                var response = await client.DeleteAsync($"{controller}/{id}");
+                var result = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return JsonConvert.DeserializeObject<ApiResponse>(result);
+                }
+
+                return new ApiResponse
+                {
+                    IsSuccess = false,
+                    Message = result
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse
+                {
+                    IsSuccess = false,
+                    Message = ex.Message
+                };
             }
         }
 
