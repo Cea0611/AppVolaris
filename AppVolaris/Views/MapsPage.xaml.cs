@@ -33,8 +33,8 @@ namespace AppVolaris.Views
             MapControl.MoveToRegion(
                     MapSpan.FromCenterAndRadius(
                         new Position(
-                            gas.Latitude,
-                            gas.Longitude
+                            flight.Latitude,
+                            flight.Logitude
                         ), Distance.FromMiles(.5)
                     )
                 ); ;
