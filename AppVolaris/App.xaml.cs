@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppVolaris.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace AppVolaris
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new ListFlightsPage();
         }
 
         protected override void OnStart()
