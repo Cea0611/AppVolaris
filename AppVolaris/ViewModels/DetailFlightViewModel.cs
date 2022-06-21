@@ -55,7 +55,6 @@ namespace AppVolaris.ViewModels
             Picture = taskSelected.ImageBase64;
         }
 
-
         //Cancelar
         private async void CancelAction()
         {

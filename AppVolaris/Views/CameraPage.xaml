@@ -4,9 +4,16 @@
              x:Class="AppVolaris.Views.CameraPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Camara"
+               HorizontalOptions="CenterAndExpand" />
+            <Image
+                Source="{Binding TaskSelected.Picture, Converter= {StaticResource ImageConverter}}"/>
+            <Button
+                Text="Tomar foto"
+                Command="{Binding TakePictureCommand}"/>
+            <Button
+                Text="Seleccionar foto"
+                Command="{Binding SelectPictureCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
