@@ -18,7 +18,7 @@
 		</provider>
 		<meta-data
 			android:name="com.google.android.geo.API_KEY"
-		    android:value="AIzaSyCHHOuxbTWlwPY2Oh9VD5AkoP14YH35YT0" />
+		    android:value="AIzaSyBZFFcytGv0RzfOhLp05ZQ_s-DhCLT5jl8" />
 	</application>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
