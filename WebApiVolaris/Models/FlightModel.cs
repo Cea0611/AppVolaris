@@ -6,7 +6,7 @@ namespace WebApiVolaris.Models
     {
 
         //Coneccion Azure
-        string Connectionstring = "";
+        string Connectionstring = "Server=tcp:sqlservervuelos.database.windows.net,1433;Initial Catalog=sqlservervuelos;Persist Security Info=False;User ID=sqlvuelos;Password=vuelos.01;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public int ID { get; set; }
         public string? Name { get; set; }

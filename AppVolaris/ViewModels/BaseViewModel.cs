@@ -10,13 +10,6 @@ namespace AppVolaris.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        bool _IsBusy;
-        public bool IsBusy
-        {
-            get => _IsBusy;
-            set => SetProperty(ref _IsBusy, value);
-        }
-
         protected bool SetProperty<T>(ref T backingStore, T value, [CallerMemberName] string propertyName = "", Action onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
@@ -33,6 +26,11 @@ namespace AppVolaris.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        bool _IsBusy;
+        public bool IsBusy
+        {
+            get => _IsBusy;
+            set => SetProperty(ref _IsBusy, value);
+        }
     }
-
 }
