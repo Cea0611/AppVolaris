@@ -20,7 +20,7 @@
 			android:name="com.google.android.geo.API_KEY"
 		    android:value="AIzaSyBZFFcytGv0RzfOhLp05ZQ_s-DhCLT5jl8" />
 	</application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permissi on.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />

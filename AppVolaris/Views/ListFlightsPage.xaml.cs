@@ -15,6 +15,8 @@ namespace AppVolaris.Views
         public ListFlightsPage()
         {
             InitializeComponent();
+
+            //BindingContext = 
         }
     }
 }

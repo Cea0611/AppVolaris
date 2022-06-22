@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppVolaris.App">
     <Application.Resources>
-
+        <Color x:Key="BackgroundColor">#56f121</Color>
+        <Color x:Key="BarTextColor">white</Color>
     </Application.Resources>
 </Application>
