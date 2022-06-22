@@ -3,39 +3,39 @@ using WebApiVolaris.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace WebApiVolaris.Controllers
+namespace PassagerController.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class DriverController : ControllerBase
+    public class PassagerController : ControllerBase
     {
-        // GET: api/<DriverController>
+        // GET: api/<PassagerController>
         [HttpGet]
         public ApiResponse Get()
         {
             return new FlightModel().GetAll();
         }
 
-        // GET api/<DriverController>/5
+        // GET api/<PassagerController>/5
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/<DriverController>
+        // POST api/<PassagerController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<DriverController>/5
+        // PUT api/<PassagerController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<DriverController>/5
+        // DELETE api/<PassagerController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

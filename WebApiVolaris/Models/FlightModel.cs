@@ -30,8 +30,8 @@ namespace WebApiVolaris.Models
                 using (SqlConnection conn = new SqlConnection(Connectionstring))
                 {
                     conn.Open();
-                    string tsql = "SELECT * FROM Flight " +
-                                  "INNER JOIN Position ON Flight.IDActualPosition = Position.IDPosition";
+                    string tsql = "SELECT * FROM Passager " +
+                                  "INNER JOIN Position ON Passager.IDActualPosition = Position.IDPosition";
                     using (SqlCommand cmd = new SqlCommand(tsql, conn))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
@@ -40,7 +40,7 @@ namespace WebApiVolaris.Models
                             {
                                 list.Add(new FlightModel
                                 {
-                                    ID = (int)reader["IDFlight"],
+                                    ID = (int)reader["IDPassager"],
                                     Name = reader["Name"].ToString(),
                                     Picture = reader["Picture"].ToString(),
                                     Date = reader["Date"].ToString(),
