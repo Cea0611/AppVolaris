@@ -1,4 +1,5 @@
-﻿using AppVolaris.Models;
+﻿
+using AppVolaris.Models;
 using AppVolaris.Services;
 using Newtonsoft.Json;
 using System;
@@ -10,6 +11,8 @@ namespace AppVolaris.ViewModels
 {
     public class ListFlightsViewModel : BaseViewModel
     {
+        private Command _NewCommand;
+        public Command NewCommand => _NewCommand ?? (_NewCommand = new Command(NewAction));
 
         private List<FlightModel> _ListFlights;
         public List<FlightModel> ListFlights
@@ -43,6 +46,11 @@ namespace AppVolaris.ViewModels
             }
             ListFlights = JsonConvert.DeserializeObject<List<FlightModel>>(response.Result.ToString());
             IsBusy = false;
+        }
+
+        private void NewAction()
+        {
+           // Application.Current.MainPage.Navigation.PushAsync(new DetailFlightsPage());
         }
     }
 }
