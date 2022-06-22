@@ -1,10 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:AppGas.Converters" 
              x:Class="AppVolaris.Views.ListFlightsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="*"
+            Command="{Binding NewCommans}">
+            <ToolbarItem.IconImageSource>
+                <OnPlatform
+                    x:TypeArguments="ImageSource">
+                    <On
+                        Platform="Android, iOS"
+                        Value="plus.png"/>
+                </OnPlatform>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-           
-        </StackLayout>
+        <CollectionView
+            x:Name="DishesList"
+            ItemsSource="{Binding Task}"
+            SelectionMode="Single"
+            SelectedItem="{Binding TaskSelected}"
+            SelectionChangedCommand="{Binding SelectedCommand}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image
+                                Grid.RowSpan="2"
+                                HeightRequest="50"
+                                Source="{Binding ImageBase64, Converter={StaticResource ImageConverter}}" />
+                        <Label
+                                Grid.Column="2"
+                                Grid.Row="1"
+                                FontAttributes="Bold"
+                                Text="{Binding Name}" />
+                        <Label
+                                Grid.Column="2"
+                                Grid.Row="2"
+                                Text="{Binding Status}" />
+                        <Label
+                                Grid.Column="2"
+                                Grid.Row="2"
+                                Text="{Binding Date}" />
+                        <Label
+                                Grid.Column="2"
+                                Grid.Row="2"
+                                Text="{Binding Hour}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ContentPage.Content>
+        <StackLayout>
+            
+        </StackLayout>
 </ContentPage>

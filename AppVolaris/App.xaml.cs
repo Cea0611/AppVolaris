@@ -11,7 +11,11 @@ namespace AppVolaris
         {
             InitializeComponent();
 
-            MainPage = new ListFlightsPage();
+            //MainPage = new ListFlightsPage();
+            NavigationPage nav = new NavigationPage(new ListFlightsPage());
+            nav.BarBackgroundColor = (Color)App.Current.Resources["BackgroundColor"];
+            nav.BarTextColor = (Color)App.Current.Resources["BarTextColor"];
+            MainPage = nav;
         }
 
         protected override void OnStart()
