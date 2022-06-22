@@ -10,7 +10,7 @@ namespace AppVolaris.Services
 {
     internal class ApiService
     {
-        private string ApiUrl = "https://webapivuelo.azurewebsites.net";
+        private string ApiUrl = "https://webapivuelo.azurewebsites.net/passager";
 
         public async Task<ApiResponse> GetDataAsync(string controller)
         {

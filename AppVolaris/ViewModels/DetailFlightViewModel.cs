@@ -5,6 +5,7 @@ using Plugin.Media;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppVolaris.ViewModels
@@ -29,6 +30,22 @@ namespace AppVolaris.ViewModels
         private Command _MapCommand;
         public Command MapCommand => _MapCommand ?? (_MapCommand = new Command(MapAction));
 
+        Command _GetLocationCommand;
+        public Command GetLocationCommand => _GetLocationCommand ?? (_GetLocationCommand = new Command(GetLocationAction));
+
+        private double _latitude;
+        public double Latitude
+        {
+            get => _latitude;
+            set => SetProperty(ref _latitude, value);
+        }
+
+        private double _longitude;
+        public double Longitude
+        {
+            get => _longitude;
+            set => SetProperty(ref _longitude, value);
+        }
 
         private FlightModel _TaskSelected;
         public FlightModel TaskSelected
@@ -111,6 +128,41 @@ namespace AppVolaris.ViewModels
             Picture = TaskSelected.ImageBase64 = await new ImageService().ConvertImageFileToBase64(file.Path);  //file.Path;
 
 
+        }
+
+        private async void GetLocationAction()
+        {
+            try
+            {
+                var location = await Geolocation.GetLocationAsync(); //GetLastKnownLocationAsync();
+                if (location != null)
+                {
+                    Latitude = location.Latitude;
+                    Longitude = location.Longitude;
+
+                    Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+                }
+                else
+                {
+                    Application.Current.MainPage.DisplayAlert("AppVolaris", "No se pudo obtener la ubicación", "Ok");
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Handle not supported on device exception
+            }
+            catch (FeatureNotEnabledException fneEx)
+            {
+                // Handle not enabled on device exception
+            }
+            catch (PermissionException pEx)
+            {
+                // Handle permission exception
+            }
+            catch (Exception ex)
+            {
+                // Unable to get location
+            }
         }
     }
 }

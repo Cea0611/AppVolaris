@@ -41,13 +41,15 @@
                 <Label
                     Text="Latitud"/>
                 <Entry
-                    Text="{Binding TaskSelected.Latitude}"/>
+                    Text="{Binding TaskSelected.Latitude, Latitude}"/>
                 <Label
                     Text="Longitud"/>
                 <Entry
-                    Text="{Binding TaskSelected.Longitude}"/>
+                    Text="{Binding TaskSelected.Longitude, Longitude}"/>
 
-
+                <Button
+                    Text="Ubicacion"
+                    Command="{Binding GetLocationCommand}" />
                 <Button
                     Text="Tomar Foto"
                     Command="{Binding TakePictureCommand}" />

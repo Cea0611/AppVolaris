@@ -1,6 +1,7 @@
 ﻿
 using AppVolaris.Models;
 using AppVolaris.Services;
+using AppVolaris.Views;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace AppVolaris.ViewModels
 
         private void NewAction()
         {
-           // Application.Current.MainPage.Navigation.PushAsync(new DetailFlightsPage());
+            Application.Current.MainPage.Navigation.PushAsync(new FlightDetailPage());
         }
     }
 }

@@ -12,7 +12,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem
             Text="*"
-            Command="{Binding NewCommans}">
+            Command="{Binding NewCommand}">
             <ToolbarItem.IconImageSource>
                 <OnPlatform
                     x:TypeArguments="ImageSource">
